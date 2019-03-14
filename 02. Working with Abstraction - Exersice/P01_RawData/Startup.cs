@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace P01_RawData
 {
-    class RawData
+    class Startup
     {
         static void Main(string[] args)
         {
