@@ -7,15 +7,14 @@
         public static void Main()
         {
             Hospital hospital = new Hospital();
-
+          
             string command = Console.ReadLine();
+
             while (command != "Output")
             {
-                string[] parts = command.Split();
+                string[] parts = command.Split(" ",StringSplitOptions.RemoveEmptyEntries);
                 string departamentName = parts[0];
-                string firstName = parts[1];
-                string family = parts[2];
-                string doctorName = firstName + family;
+                string doctorName = String.Join(" ", parts[1], parts[2]);
                 string patientName = parts[3];
 
                 Department department = hospital.GetDepartment(departamentName);
@@ -23,9 +22,11 @@
                 if (department.GetCountPatients() < 60)
                 {
                     Room room = department.GetRoom();
+
                     Patient patient = new Patient(patientName);
                     room.AddPatient(patient);
                     department.AddPatient(patient);
+
                     Doctor doctor = hospital.GetDoctor(doctorName);
                     doctor.AddPatient(patient);
                 }

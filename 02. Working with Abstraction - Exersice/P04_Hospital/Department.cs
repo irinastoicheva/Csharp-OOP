@@ -28,7 +28,6 @@
         {
             return this.patients.Count;
         }
-
         public Room GetRoom()
         {
             Room room;

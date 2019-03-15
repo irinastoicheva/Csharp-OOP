@@ -17,6 +17,7 @@
             if (!this.doctors.Contains(doctor))
             {
                 this.doctors.Add(doctor);
+         
             }
         }
 
