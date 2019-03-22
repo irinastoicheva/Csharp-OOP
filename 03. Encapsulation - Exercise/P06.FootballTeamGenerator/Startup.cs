@@ -39,7 +39,7 @@
                         }
                         else
                         {
-                            throw new ArgumentException($"Team {name} does not exist.");
+                            Console.WriteLine($"Team {name} does not exist.");
                         }
                     }
                 }
