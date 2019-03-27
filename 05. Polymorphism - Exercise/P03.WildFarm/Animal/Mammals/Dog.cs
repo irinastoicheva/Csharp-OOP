@@ -28,7 +28,7 @@ namespace P03.WildFarm
 
         public override string ToString()
         {
-            return $"{this.GetType().Name} [{this.Name}, {this.Weight}, {this.LivingRegion},{this.FoodEaten}]";
+            return $"{this.GetType().Name} [{this.Name}, {this.Weight}, {this.LivingRegion}, {this.FoodEaten}]";
         }
     }
 }

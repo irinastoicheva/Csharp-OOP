@@ -10,7 +10,7 @@
         protected string Breed { get; set; }
         public override string ToString()
         {
-            return $"{this.GetType().Name} [{this.Name}, {this.Breed}, {this.Weight}, {this.LivingRegion},{this.FoodEaten}]";
+            return $"{this.GetType().Name} [{this.Name}, {this.Breed}, {this.Weight}, {this.LivingRegion}, {this.FoodEaten}]";
         }
     }
 }
