@@ -1,6 +1,6 @@
 ﻿namespace P03.DetailPrinter
 {
-    public class Employee : IPrint
+    public class Employee
     {
         public Employee(string name)
         {
@@ -9,7 +9,7 @@
 
         public string Name { get; set; }
 
-        public virtual string Print()
+        public override string ToString()
         {
             return $"{this.Name}";
         }
