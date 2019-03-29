@@ -1,6 +1,6 @@
 ﻿namespace P01.Logger
 {
-    using P01.Logger.Core;
+    using Core;
 
     public class Startup
     {

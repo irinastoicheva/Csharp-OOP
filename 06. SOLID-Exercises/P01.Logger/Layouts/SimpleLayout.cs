@@ -1,6 +1,6 @@
 ﻿namespace P01.Logger.Layouts
 {
-    using P01.Logger.Layouts.Contracts;
+    using Layouts.Contracts;
 
     public class SimpleLayout : ILayout
     {

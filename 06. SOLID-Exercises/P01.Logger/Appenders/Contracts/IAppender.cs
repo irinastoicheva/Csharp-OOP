@@ -1,7 +1,7 @@
-﻿using P01.Logger.Loggers.Enums;
-
-namespace P01.Logger.Appenders.Contracts
+﻿namespace P01.Logger.Appenders.Contracts
 {
+    using Loggers.Enums;
+
     public interface IAppender
     {
         ReportLevel ReportLevel { get; set; }

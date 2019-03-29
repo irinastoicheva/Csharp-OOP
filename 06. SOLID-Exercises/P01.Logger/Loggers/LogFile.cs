@@ -1,8 +1,7 @@
-﻿using P01.Logger.Loggers.Contracts;
-using System.Linq;
-
-namespace P01.Logger.Layouts
+﻿namespace P01.Logger.Layouts
 {
+    using Loggers.Contracts;
+    using System.Linq;
 
     public class LogFile : ILogFile
     {

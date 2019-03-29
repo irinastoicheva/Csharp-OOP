@@ -1,11 +1,11 @@
 ﻿namespace P01.Logger.Core
 {
     using Core.Contracts;
-    using P01.Logger.Appenders;
-    using P01.Logger.Appenders.Contracts;
-    using P01.Logger.Layouts;
-    using P01.Logger.Layouts.Contracts;
-    using P01.Logger.Loggers.Enums;
+    using Appenders;
+    using Appenders.Contracts;
+    using Layouts;
+    using Layouts.Contracts;
+    using Loggers.Enums;
     using System;
     using System.Collections.Generic;
 
@@ -56,7 +56,10 @@
 
         public void PrintInfo()
         {
-            throw new System.NotImplementedException();
+            foreach (var appender in this.appenders)
+            {
+                Console.WriteLine(appender);
+            }
         }
     }
 }

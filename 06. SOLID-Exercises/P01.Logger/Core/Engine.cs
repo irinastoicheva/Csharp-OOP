@@ -23,7 +23,7 @@
 
             string input = Console.ReadLine();
 
-            while (input != "End")
+            while (input != "END")
             {
                 string[] reportArgs = input.Split("|");
 

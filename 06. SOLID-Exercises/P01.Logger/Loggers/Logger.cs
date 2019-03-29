@@ -1,9 +1,8 @@
 ﻿namespace P01.Logger.Loggers
 {
-    using System;
-    using P01.Logger.Appenders.Contracts;
-    using P01.Logger.Loggers.Contracts;
-    using P01.Logger.Loggers.Enums;
+    using Appenders.Contracts;
+    using Loggers.Contracts;
+    using Loggers.Enums;
 
     public class Logger : ILogger
     {

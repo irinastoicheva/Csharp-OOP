@@ -1,9 +1,8 @@
 ﻿namespace P01.Logger.Appenders
 {
-    using Appenders.Contracts;
     using Layouts.Contracts;
     using Loggers.Contracts;
-    using P01.Logger.Loggers.Enums;
+    using Loggers.Enums;
     using System;
     using System.IO;
 
@@ -25,7 +24,17 @@
                 string content = string.Format(this.Layout.Format, dateTime, reportLevel, message) + Environment.NewLine;
 
                 File.AppendAllText(Path, content);
+
+                this.MessageCount++;
+
+                logFile.Write(content);
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Appender type: {this.GetType().Name}, Layout type: {this.Layout.GetType().Name}," +
+                $" Report level: {base.ReportLevel}, Messages appended: {MessageCount}, FileSize: {this.logFile.Size}";
         }
     }
 }

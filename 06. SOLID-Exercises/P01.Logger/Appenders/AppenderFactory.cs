@@ -2,7 +2,7 @@
 {
     using Appenders.Contracts;
     using Layouts.Contracts;
-    using P01.Logger.Layouts;
+    using Layouts;
     using System;
 
     public class AppenderFactory : IAppenderFactory
