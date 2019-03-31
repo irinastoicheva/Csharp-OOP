@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.HighQualityMistakes", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.MissionPrivateImpossible", "P03.MissionPrivateImpossible\P03.MissionPrivateImpossible.csproj", "{716BA7B3-0A12-4F7F-96E4-F849959433AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04.Collector", "P04.Collector\P04.Collector.csproj", "{40572E0C-13FC-4574-A42D-5B1E25265BC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.CreateAttribute", "P05.CreateAttribute\P05.CreateAttribute.csproj", "{09C0660E-0D9E-4B92-9E93-010987FFE6DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{716BA7B3-0A12-4F7F-96E4-F849959433AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{716BA7B3-0A12-4F7F-96E4-F849959433AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{716BA7B3-0A12-4F7F-96E4-F849959433AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40572E0C-13FC-4574-A42D-5B1E25265BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40572E0C-13FC-4574-A42D-5B1E25265BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40572E0C-13FC-4574-A42D-5B1E25265BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40572E0C-13FC-4574-A42D-5B1E25265BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C0660E-0D9E-4B92-9E93-010987FFE6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C0660E-0D9E-4B92-9E93-010987FFE6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C0660E-0D9E-4B92-9E93-010987FFE6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C0660E-0D9E-4B92-9E93-010987FFE6DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

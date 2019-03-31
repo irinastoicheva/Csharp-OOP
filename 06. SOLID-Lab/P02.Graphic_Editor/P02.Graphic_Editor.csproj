@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\P03.Detail_Printer\P03.Detail_Printer.csproj" />
+  </ItemGroup>
+
 </Project>
