@@ -13,7 +13,7 @@
 
             for (int i = 0; i < input.Length; i++)
             {
-                TrafficLight trafficLight = new TrafficLight((Color)Enum.Parse(typeof(Color), input[i]));
+                TrafficLight trafficLight = new TrafficLight((Color)Enum.Parse(typeof(Color), input[1]));
                 trafficLights.Add(trafficLight);
             }
 
@@ -28,6 +28,7 @@
                 }
 
                 Console.WriteLine();
+                //Color)Enum.Parse(typeof(Color), input[i])
             }
         }
     }
