@@ -1,43 +1,46 @@
-﻿using System;
-
-public class Dummy
+﻿namespace Skeleton
 {
-    private int health;
-    private int experience;
+    using System;
 
-    public Dummy(int health, int experience)
+    public class Dummy
     {
-        this.health = health;
-        this.experience = experience;
-    }
+        private int health;
+        private int experience;
 
-    public int Health 
-    {
-        get { return this.health; }
-    }
-
-    public void TakeAttack(int attackPoints)
-    {
-        if (this.IsDead())
+        public Dummy(int health, int experience)
         {
-            throw new InvalidOperationException("Dummy is dead.");
+            this.health = health;
+            this.experience = experience;
         }
 
-        this.health -= attackPoints;
-    }
-
-    public int GiveExperience()
-    {
-        if (!this.IsDead())
+        public int Health
         {
-            throw new InvalidOperationException("Target is not dead.");
+            get { return this.health; }
         }
 
-        return this.experience;
-    }
+        public void TakeAttack(int attackPoints)
+        {
+            if (this.IsDead())
+            {
+                throw new InvalidOperationException("Dummy is dead.");
+            }
 
-    public bool IsDead()
-    {
-        return this.health <= 0;
+            this.health -= attackPoints;
+        }
+
+        public int GiveExperience()
+        {
+            if (!this.IsDead())
+            {
+                throw new InvalidOperationException("Target is not dead.");
+            }
+
+            return this.experience;
+        }
+
+        public bool IsDead()
+        {
+            return this.health <= 0;
+        }
     }
 }
