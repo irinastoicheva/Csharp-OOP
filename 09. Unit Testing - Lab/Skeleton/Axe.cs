@@ -1,10 +1,9 @@
 ﻿namespace Skeleton
 {
+    using Skeleton.Contracts;
     using System;
 
-
-    // Axe durability drop with 5 
-    public class Axe
+    public class Axe : IWeapon
     {
         private int attackPoints;
         private int durabilityPoints;
@@ -25,7 +24,7 @@
             get { return this.durabilityPoints; }
         }
 
-        public void Attack(Dummy target)
+        public void Attack(ITarget target)
         {
             if (this.durabilityPoints <= 0)
             {
