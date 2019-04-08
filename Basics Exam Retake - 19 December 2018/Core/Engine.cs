@@ -2,7 +2,6 @@
 {
     using Core.Contracts;
     using System;
-    using System.Linq;
 
     public class Engine : IEngine
     {
