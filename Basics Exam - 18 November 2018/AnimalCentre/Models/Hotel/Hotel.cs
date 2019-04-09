@@ -7,20 +7,20 @@ namespace AnimalCentre.Models.Hotel
     public class Hotel : IHotel
     {
         public const int CapacityConst = 10;
+        private int capacity;
 
         private Dictionary<string, IAnimal> animals;
 
         public Hotel()
         {
             this.animals = new Dictionary<string, IAnimal>();
-            this.Capacity = CapacityConst;
+            this.capacity = CapacityConst;
         }
 
         public IReadOnlyDictionary<string, IAnimal> Animals => this.animals;
-        public int Capacity { get; private set; }
         public void Accommodate(IAnimal animal)
         {
-            if (this.animals.Count == this.Capacity)
+            if (this.animals.Count == this.capacity)
             {
                 throw new InvalidOperationException("Not enough capacity");
             }

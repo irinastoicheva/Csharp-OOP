@@ -90,16 +90,7 @@ namespace AnimalCentre.Core
 
         public string History(string type)
         {
-            IProcedure procedure = this.list[type];
-
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"{type}");
-            foreach (IAnimal animal in procedure.ProcedureHistory)
-            {
-                sb.AppendLine($"    {animal.ToString()}");
-            }
-
-            return sb.ToString().TrimEnd();
+            return this.list[type].History().ToString();
         }
 
         public string MoveProcedure(string name, int procedureTime, string type)

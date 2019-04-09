@@ -13,7 +13,7 @@ namespace AnimalCentre.Models.Procedures
             {
                 animal.IsChipped = true;
                 animal.Happiness -= 5;
-                this.ProcedureHistory.Add(animal);
+                this.procedureHistory.Add(animal);
             }
             else
             {

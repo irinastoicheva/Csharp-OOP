@@ -9,7 +9,7 @@ namespace AnimalCentre.Models.Procedures
             base.DoService(animal, procedureTime);
             animal.Energy -= 8;
             animal.IsVaccinated = true;
-            this.ProcedureHistory.Add(animal);
+            this.procedureHistory.Add(animal);
         }
     }
 }

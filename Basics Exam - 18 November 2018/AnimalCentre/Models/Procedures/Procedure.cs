@@ -7,20 +7,19 @@ namespace AnimalCentre.Models.Procedures
 {
     public abstract class Procedure :IProcedure
     {
-        private readonly List<IAnimal> procedureHistory;
+        protected List<IAnimal> procedureHistory;
         public Procedure()
         {
-            this.ProcedureHistory = new List<IAnimal>();
+            this.procedureHistory = new List<IAnimal>();
         }
 
-        public List<IAnimal> ProcedureHistory { get; set; }
         public string History()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{this.GetType().Name}");
             foreach (var item in this.procedureHistory)
             {
-                sb.AppendLine($"    - {item.Name} - Happiness: {item.Happiness} - Energy: {item.Energy}");
+                sb.AppendLine(item.ToString());
             }
 
             return sb.ToString().TrimEnd();

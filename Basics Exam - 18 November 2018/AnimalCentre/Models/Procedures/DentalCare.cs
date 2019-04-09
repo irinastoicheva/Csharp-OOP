@@ -9,7 +9,7 @@ namespace AnimalCentre.Models.Procedures
             base.DoService(animal, procedureTime);
             animal.Happiness += 12;
             animal.Energy += 10;
-            this.ProcedureHistory.Add(animal);
+            this.procedureHistory.Add(animal);
         }
     }
 }

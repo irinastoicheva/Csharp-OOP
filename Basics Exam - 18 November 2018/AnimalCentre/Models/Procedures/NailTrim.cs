@@ -8,7 +8,7 @@ namespace AnimalCentre.Models.Procedures
         {
             base.DoService(animal, procedureTime);
             animal.Happiness -= 7;
-            this.ProcedureHistory.Add(animal);
+            this.procedureHistory.Add(animal);
         }
     }
 }
