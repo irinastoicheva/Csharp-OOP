@@ -1,12 +1,14 @@
-﻿using System;
-
-namespace AnimalCentre
+﻿namespace AnimalCentre
 {
+    using System;
+    using Core;
     public class StartUp
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            //TODO Run your application from here
+            AnimalCentre animalCentre = new AnimalCentre();
+            Engine engine = new Engine(animalCentre);
+            engine.Run();
         }
     }
 }

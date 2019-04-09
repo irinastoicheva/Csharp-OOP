@@ -1,4 +1,5 @@
 ﻿using AnimalCentre.Models.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,13 +7,13 @@ namespace AnimalCentre.Models.Procedures
 {
     public abstract class Procedure :IProcedure
     {
-        private List<IAnimal> procedureHistory;
+        private readonly List<IAnimal> procedureHistory;
         public Procedure()
         {
-            this.procedureHistory = new List<IAnimal>();
+            this.ProcedureHistory = new List<IAnimal>();
         }
-        
 
+        public List<IAnimal> ProcedureHistory { get; set; }
         public string History()
         {
             StringBuilder sb = new StringBuilder();
@@ -27,6 +28,14 @@ namespace AnimalCentre.Models.Procedures
 
         public virtual void DoService(IAnimal animal, int procedureTime)
         {
+            if (animal.ProcedureTime < procedureTime)
+            {
+                throw new ArgumentException("Animal doesn't have enough procedure time");
+            }
+            else
+            {
+                animal.ProcedureTime -= procedureTime;
+            }
         }
     }
 }

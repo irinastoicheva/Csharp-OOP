@@ -6,7 +6,8 @@
     {
         private int happiness;
         private int energy;
-        public Animal(string name, int energy, int happiness, int procedureTime) 
+
+        public Animal(string name, int energy, int happiness, int procedureTime)
         {
             this.Name = name;
             this.Energy = energy;
@@ -21,7 +22,7 @@
         public int Energy
         {
             get => this.energy;
-            private set
+            set
             {
                 if (value < 0 || value > 100)
                 {
@@ -31,16 +32,16 @@
             }
         }
 
-        public bool IsVaccinated { get; private set; }
-        public bool IsChipped { get; private set; }
-        public bool IsAdopt { get; private set; }
-        public string Owner { get; private set; }
-        public int ProcedureTime { get; private set; }
+        public bool IsVaccinated { get; set; }
+        public bool IsChipped { get; set; }
+        public bool IsAdopt { get; set; }
+        public string Owner { get; set; }
+        public int ProcedureTime { get; set; }
         public string Name { get; private set; }
         public int Happiness
         {
             get => this.happiness;
-            private set
+            set
             {
                 if (value < 0 || value > 100)
                 {
@@ -50,9 +51,6 @@
             }
         }
 
-        public override string ToString()
-        {
-            return $"Animal type: {this.GetType().Name} - {this.Name} - Happiness: {this.Happiness} - Energy: {this.Energy}";
-        }
+        public abstract string ToString();
     }
 }

@@ -3,12 +3,14 @@
     public interface IAnimal
     {
         string Name { get; }
-        int Energy { get; }
-        int Happiness { get; }
-        int ProcedureTime { get; }
-        bool IsVaccinated { get; }
-        bool IsChipped { get; }
-        bool IsAdopt { get; }
-        string Owner { get; }
+        int Energy { get; set; }
+        int Happiness { get; set; }
+        int ProcedureTime { get; set; }
+        bool IsVaccinated { get; set; }
+        bool IsChipped { get; set; }
+        bool IsAdopt { get; set; }
+        string Owner { get; set; }
+
+        string ToString();
     }
 }
