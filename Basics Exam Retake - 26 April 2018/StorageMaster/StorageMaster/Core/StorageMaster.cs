@@ -7,15 +7,16 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Reflection;
 
     public class StorageMaster
     {
-        private List<Product> products;
+        private Dictionary<string, Stack<Product>> products;
         private List<Storage> storages;
         private Vehicle selectedVehicle = null;
         public StorageMaster()
         {
-            this.products = new List<Product>();
+            this.products = new Dictionary<string, Stack<Product>>();
             this.storages = new List<Storage>();
         }
 
@@ -23,14 +24,19 @@
         {
             var classType = typeof(StorageMaster).Assembly.GetTypes().FirstOrDefault(x => x.Name == type);
 
-            if (classType == null)
+            if (classType == null || classType.IsAbstract)
             {
                 throw new InvalidOperationException("Invalid product type!");
             }
 
             var instance = (Product)Activator.CreateInstance(classType, new object[] { price });
 
-            this.products.Add(instance);
+            if (!this.products.ContainsKey(type))
+            {
+                this.products[type] = new Stack<Product>();
+            }
+
+            this.products[type].Push(instance);
 
             return $"Added {type} to pool";
         }
@@ -65,13 +71,19 @@
             int count = 0;
             foreach (var productName in productNames)
             {
-                if (this.products.Any(x => x.GetType().Name == productName))
+                if (this.selectedVehicle.IsFull)
                 {
-                    Product product = this.products.FirstOrDefault(x => x.GetType().Name == productName);
-                    this.selectedVehicle.LoadProduct(product);
-                    this.products.Remove(product);
-                    count++;
+                    break;
                 }
+
+                if (!this.products.ContainsKey(productName) || this.products[productName].Count == 0)
+                {
+                    throw new InvalidOperationException($"{productName} is out of stock!");
+                }
+
+                Product product = this.products[productName].Pop();
+                this.selectedVehicle.LoadProduct(product);
+                count++;
             }
 
             return $"Loaded {count}/{productNames.Count()} products into {selectedVehicle.GetType().Name}";
@@ -85,14 +97,13 @@
                 throw new InvalidOperationException("Invalid source storage!");
             }
 
-            Vehicle vehicle = sourseStorage.GetVehicle(sourceGarageSlot);
-
             Storage destinationStorege = this.storages.FirstOrDefault(x => x.Name == destinationName);
             if (destinationStorege == null)
             {
                 throw new InvalidOperationException("Invalid destination storage!");
             }
 
+            Vehicle vehicle = sourseStorage.GetVehicle(sourceGarageSlot);
 
             int index = sourseStorage.SendVehicleTo(sourceGarageSlot, destinationStorege);
 
@@ -104,6 +115,7 @@
             Storage storage = this.storages.FirstOrDefault(x => x.Name == storageName);
 
             Vehicle vehicle = storage.GetVehicle(garageSlot);
+
             int counterTruncProducts = vehicle.Trunk.Count;
 
             int counter = storage.UnloadVehicle(garageSlot);
@@ -115,15 +127,35 @@
         {
             Storage storage = this.storages.FirstOrDefault(x => x.Name == storageName);
 
-            var sortedProducts = storage.Products.GroupBy(x => x.GetType().Name).OrderByDescending(x => x.Count()).ThenBy(x => x.GetType().Name);
+            Dictionary<string, int> productsAndCount = new Dictionary<string, int>();
+            foreach (var item in storage.Products)
+            {
+                string productTypeName = item.GetType().Name;
+
+                if (!productsAndCount.ContainsKey(productTypeName))
+                {
+                    productsAndCount[productTypeName] = 0;
+                }
+
+                productsAndCount[productTypeName]++;
+            }
+
+            double productsSum = storage.Products.Sum(x => x.Weight);
+
+            string[] productsAsString = productsAndCount
+                .OrderByDescending(x => x.Value)
+                .ThenBy(x => x.Key)
+                .Select(x => $"{x.Key} ({x.Value})")
+                .ToArray();
+
+            string[] storageString = storage.Garage.Select(x => x == null ? "empty" : x.GetType().Name).ToArray();
 
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Stock({products.Sum(x => x.Weight)}/{ storage.Capacity}): [{string.Join(", ", sortedProducts)}]");
+            sb.AppendLine($"Stock ({productsSum}/{storage.Capacity}): [{string.Join(", ", productsAsString)}]");
+            sb.AppendLine($"Garage: [{string.Join("|", storageString)}]");
 
-            sb.AppendLine($"Garage: [{string.Join("|", storage.Garage)}]");
-
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
 
         public string GetSummary()
