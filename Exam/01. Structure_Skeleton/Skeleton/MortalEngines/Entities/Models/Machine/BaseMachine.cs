@@ -25,7 +25,7 @@ namespace MortalEngines.Entities.Models
             get => this.name;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value) && string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentNullException("Machine name cannot be null or empty.");
                 }
@@ -81,7 +81,7 @@ namespace MortalEngines.Entities.Models
             }
             else
             {
-                sb.AppendLine($"{string.Join(", ", this.Targets)}");
+                sb.AppendLine($"{string.Join(",", this.Targets)}");
             }
 
             return sb.ToString().TrimEnd();

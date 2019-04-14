@@ -20,7 +20,7 @@ namespace MortalEngines.Entities.Models
             get => this.name;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value) && string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentNullException("Pilot name cannot be null or empty string.");
                 }

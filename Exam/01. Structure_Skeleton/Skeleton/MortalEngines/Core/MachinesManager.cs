@@ -124,6 +124,7 @@
             else
             {
                 attackingMachine.Attack(defendingMachine);
+                attackingMachine.Targets.Add(defendingMachine.Name);
                 result = $"Machine {defendingMachineName} was attacked by machine {attackingMachineName} - current health: {defendingMachine.HealthPoints}";
             }
 
