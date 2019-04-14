@@ -8,7 +8,7 @@ namespace MortalEngines.Entities.Models.Machine
         private const double initialHealthPoints = 200;
 
         public Fighter(string name, double attackPoints, double defensePoints)
-            : base(name, attackPoints, defensePoints, initialHealthPoints)
+            : base(name, attackPoints + 50, defensePoints - 25, initialHealthPoints)
         {
             this.AggressiveMode = true;
         }

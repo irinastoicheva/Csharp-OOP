@@ -8,7 +8,7 @@ namespace MortalEngines.Entities.Models.Machine
         private const double initialHealthPoints = 100;
 
         public Tank(string name, double attackPoints, double defensePoints) 
-            : base(name, attackPoints, defensePoints, initialHealthPoints)
+            : base(name, attackPoints - 40, defensePoints + 30, initialHealthPoints)
         {
             this.DefenseMode = true;
         }
